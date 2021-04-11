@@ -1,12 +1,12 @@
 from flask import Flask, jsonify, request
-from admin_panel import Administrador
+from admin_panel import Administrator
 from markupsafe import escape
 from panel_server import serve
 import os
 
 app = Flask(__name__)
 
-admin = Administrador()
+admin = Administrator()
 
 @app.route('/', methods=['GET'])
 def root_route():
@@ -17,7 +17,7 @@ def root_route():
 
 @app.route('/register', methods=['POST'])
 def register():
-    # admin = Administrador()
+    # admin = Administrator()
     result = admin.register(
         cid=request.json['cid'],
         info=request.json['info']
@@ -26,7 +26,7 @@ def register():
 
 @app.route('/update', methods=['PUT'])
 def update():
-    # admin = Administrador()
+    # admin = Administrator()
     result = admin.update(
         cid=request.json['cid'],
         info=request.json['info']
@@ -35,13 +35,13 @@ def update():
 
 @app.route('/client/<cid>', methods=['GET'])
 def get(cid):
-    # admin = Administrador()
+    # admin = Administrator()
     result = admin.get(cid=escape(cid))
     return jsonify({'message': result.message})
 
 @app.route('/client/<cid>', methods=['DELETE'])
 def delete(cid):
-    # admin = Administrador()
+    # admin = Administrator()
     result = admin.delete(cid=escape(cid))
     return jsonify({'message': result.message})
 

@@ -21,7 +21,7 @@ import admin_panel_pb2
 import admin_panel_pb2_grpc
 
 
-class Administrador:
+class Administrator:
 
     def __init__(self, host='localhost', server_port=50051):
         self.host = host
