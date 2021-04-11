@@ -21,6 +21,38 @@ import admin_panel_pb2
 import admin_panel_pb2_grpc
 
 
+class Administrador:
+
+    def __init__(self, host='localhost', server_port=50051):
+        self.host = host
+        self.server_port = server_port
+
+        self.channel = grpc.insecure_channel(f'{self.host}:{self.server_port}')
+        self.stub = admin_panel_pb2_grpc.AdminPanelStub(self.channel)
+
+    def register(self, cid, info):
+        insert_request = admin_panel_pb2.RequestValue(
+            cid=cid,
+            value=info,
+        )
+        return self.stub.InsertClient(insert_request)
+
+    def update(self, cid, info):
+        update_request = admin_panel_pb2.RequestValue(
+            cid=cid,
+            value=info,
+        )
+        return self.stub.UpdateClient(update_request)
+
+    def get(self, cid):
+        get_request = admin_panel_pb2.Request(cid=cid)
+        return self.stub.GetClient(get_request)
+
+    def delete(self, cid):
+        delete_request = admin_panel_pb2.Request(cid=cid)
+        return self.stub.DeleteClient(delete_request)
+
+
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
