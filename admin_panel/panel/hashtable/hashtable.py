@@ -37,14 +37,31 @@ class HashTable:
         if _node is None:
             # Create node
             self.buckets[_index] = Node(key, value)
-            return True
+            return 'CID created!'
 
         _prev = _node
         while _node is not None:
+            if key == _node.key: return 'CID already exists!'
             _prev = _node
             _node = _node.next
         _prev.next = Node(key, value)
-        return True
+        return 'CID created!'
+
+    # @param {string} key
+    # @param {*} value
+    # @returns bool
+    def update(self, key, value):
+        _index = self.hash(key)
+        _node = self.buckets[_index]
+
+        if _node is None: return 'CID not found!'
+
+        while _node is not None:
+            if key == _node.key:
+                _node.value = value
+                return 'CID updated!'
+            _node = _node.next
+        return 'CID not found!'
 
     # @param {string} key
     # @returns {*}
@@ -56,7 +73,7 @@ class HashTable:
         while _node is not None and _node.key != key:
             _node = _node.next
 
-        if _node is None: return None
+        if _node is None: return 'CID not found!'
         else: return _node.value
 
 
@@ -72,12 +89,11 @@ class HashTable:
             _prev = _node
             _node = _node.next
 
-        if _node is None: return None
+        if _node is None: return 'CID not found!'
         else:
-            _result = _node.value
             if _prev is None: self.buckets[_index] = _node.next
             else: _prev.next = _prev.next.next
-            return _result
+            return 'CID deleted!'
 
     # @params {string} key
     # @returns {number}
@@ -95,3 +111,4 @@ class HashTable:
                 print("{%s: %s}" % (_node.key, _node.value), end=' -> ')
                 _node = _node.next
             print("None")
+        print("")

@@ -16,6 +16,21 @@ class AdminPanelStub(object):
         """
         self.InsertClient = channel.unary_unary(
                 '/panel.AdminPanel/InsertClient',
+                request_serializer=admin__panel__pb2.RequestValue.SerializeToString,
+                response_deserializer=admin__panel__pb2.Response.FromString,
+                )
+        self.UpdateClient = channel.unary_unary(
+                '/panel.AdminPanel/UpdateClient',
+                request_serializer=admin__panel__pb2.RequestValue.SerializeToString,
+                response_deserializer=admin__panel__pb2.Response.FromString,
+                )
+        self.GetClient = channel.unary_unary(
+                '/panel.AdminPanel/GetClient',
+                request_serializer=admin__panel__pb2.Request.SerializeToString,
+                response_deserializer=admin__panel__pb2.Response.FromString,
+                )
+        self.DeleteClient = channel.unary_unary(
+                '/panel.AdminPanel/DeleteClient',
                 request_serializer=admin__panel__pb2.Request.SerializeToString,
                 response_deserializer=admin__panel__pb2.Response.FromString,
                 )
@@ -31,11 +46,47 @@ class AdminPanelServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def UpdateClient(self, request, context):
+        """Update client value
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetClient(self, request, context):
+        """Get client value
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def DeleteClient(self, request, context):
+        """Delete client
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AdminPanelServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'InsertClient': grpc.unary_unary_rpc_method_handler(
                     servicer.InsertClient,
+                    request_deserializer=admin__panel__pb2.RequestValue.FromString,
+                    response_serializer=admin__panel__pb2.Response.SerializeToString,
+            ),
+            'UpdateClient': grpc.unary_unary_rpc_method_handler(
+                    servicer.UpdateClient,
+                    request_deserializer=admin__panel__pb2.RequestValue.FromString,
+                    response_serializer=admin__panel__pb2.Response.SerializeToString,
+            ),
+            'GetClient': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetClient,
+                    request_deserializer=admin__panel__pb2.Request.FromString,
+                    response_serializer=admin__panel__pb2.Response.SerializeToString,
+            ),
+            'DeleteClient': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteClient,
                     request_deserializer=admin__panel__pb2.Request.FromString,
                     response_serializer=admin__panel__pb2.Response.SerializeToString,
             ),
@@ -61,6 +112,57 @@ class AdminPanel(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/panel.AdminPanel/InsertClient',
+            admin__panel__pb2.RequestValue.SerializeToString,
+            admin__panel__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UpdateClient(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/panel.AdminPanel/UpdateClient',
+            admin__panel__pb2.RequestValue.SerializeToString,
+            admin__panel__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetClient(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/panel.AdminPanel/GetClient',
+            admin__panel__pb2.Request.SerializeToString,
+            admin__panel__pb2.Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteClient(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/panel.AdminPanel/DeleteClient',
             admin__panel__pb2.Request.SerializeToString,
             admin__panel__pb2.Response.FromString,
             options, channel_credentials,

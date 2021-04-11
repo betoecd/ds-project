@@ -29,9 +29,26 @@ def run():
         stub = admin_panel_pb2_grpc.AdminPanelStub(channel)
         response = []
         response.append(stub.InsertClient(
-            admin_panel_pb2.Request(cid='beto', value='mago dos códigos')))
+            admin_panel_pb2.RequestValue(cid='beto', value='mago dos códigos')))
+        response.append(stub.InsertClient(
+            admin_panel_pb2.RequestValue(cid='beto2', value='mago dos códigos 2')))
+        response.append(stub.UpdateClient(
+            admin_panel_pb2.RequestValue(cid='beto3', value='mago dos códigos')))
+        response.append(stub.UpdateClient(
+            admin_panel_pb2.RequestValue(cid='beto2', value='mago dos códigos II')))
+        response.append(stub.GetClient(
+            admin_panel_pb2.Request(cid='beto3')))
+        response.append(stub.GetClient(
+            admin_panel_pb2.Request(cid='beto2')))
+        response.append(stub.DeleteClient(
+            admin_panel_pb2.Request(cid='beto3')))
+        response.append(stub.DeleteClient(
+            admin_panel_pb2.Request(cid='beto')))
+
     for r in response:
-        print(r.success)
+        print(r)
+
+    print(response)
 
 
 if __name__ == '__main__':

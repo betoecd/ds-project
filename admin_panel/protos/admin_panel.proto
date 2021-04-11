@@ -18,14 +18,24 @@ package panel;
 
 service AdminPanel {
     // Insert client hashtable
-    rpc InsertClient (Request) returns (Response) {}
+    rpc InsertClient (RequestValue) returns (Response) {}
+    // Update client value
+    rpc UpdateClient (RequestValue) returns (Response) {}
+    // Get client value
+    rpc GetClient (Request) returns (Response) {}
+    // Delete client
+    rpc DeleteClient (Request) returns (Response) {}
+}
+
+message RequestValue {
+    string cid = 1;
+    string value = 2;
 }
 
 message Request {
-  string cid = 1;
-  string value = 2;
+    string cid = 1;
 }
 
 message Response {
-  bool success = 1;
+    string message = 1;
 }

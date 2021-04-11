@@ -31,7 +31,25 @@ class AdminPanel(admin_panel_pb2_grpc.AdminPanelServicer):
     def InsertClient(self, request, context):
         result = self.hash_table.set(request.cid, request.value)
         self.hash_table.structure()
-        response = {'success': result}
+        response = {'message': result}
+        return admin_panel_pb2.Response(**response)
+
+    def UpdateClient(self, request, context):
+        result = self.hash_table.update(request.cid, request.value)
+        self.hash_table.structure()
+        response = {'message': result}
+        return admin_panel_pb2.Response(**response)
+
+    def GetClient(self, request, context):
+        result = self.hash_table.get(request.cid)
+        self.hash_table.structure()
+        response = {'message': result}
+        return admin_panel_pb2.Response(**response)
+
+    def DeleteClient(self, request, context):
+        result = self.hash_table.delete(request.cid)
+        self.hash_table.structure()
+        response = {'message': result}
         return admin_panel_pb2.Response(**response)
 
 

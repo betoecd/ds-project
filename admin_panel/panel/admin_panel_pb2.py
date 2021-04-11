@@ -19,29 +19,29 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x11\x61\x64min_panel.proto\x12\x05panel\"%\n\x07Request\x12\x0b\n\x03\x63id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32?\n\nAdminPanel\x12\x31\n\x0cInsertClient\x12\x0e.panel.Request\x1a\x0f.panel.Response\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11\x61\x64min_panel.proto\x12\x05panel\"*\n\x0cRequestValue\x12\x0b\n\x03\x63id\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x16\n\x07Request\x12\x0b\n\x03\x63id\x18\x01 \x01(\t\"\x1b\n\x08Response\x12\x0f\n\x07message\x18\x01 \x01(\t2\xdf\x01\n\nAdminPanel\x12\x36\n\x0cInsertClient\x12\x13.panel.RequestValue\x1a\x0f.panel.Response\"\x00\x12\x36\n\x0cUpdateClient\x12\x13.panel.RequestValue\x1a\x0f.panel.Response\"\x00\x12.\n\tGetClient\x12\x0e.panel.Request\x1a\x0f.panel.Response\"\x00\x12\x31\n\x0c\x44\x65leteClient\x12\x0e.panel.Request\x1a\x0f.panel.Response\"\x00\x62\x06proto3'
 )
 
 
 
 
-_REQUEST = _descriptor.Descriptor(
-  name='Request',
-  full_name='panel.Request',
+_REQUESTVALUE = _descriptor.Descriptor(
+  name='RequestValue',
+  full_name='panel.RequestValue',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='cid', full_name='panel.Request.cid', index=0,
+      name='cid', full_name='panel.RequestValue.cid', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
     _descriptor.FieldDescriptor(
-      name='value', full_name='panel.Request.value', index=1,
+      name='value', full_name='panel.RequestValue.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -60,22 +60,22 @@ _REQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=28,
-  serialized_end=65,
+  serialized_end=70,
 )
 
 
-_RESPONSE = _descriptor.Descriptor(
-  name='Response',
-  full_name='panel.Response',
+_REQUEST = _descriptor.Descriptor(
+  name='Request',
+  full_name='panel.Request',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   create_key=_descriptor._internal_create_key,
   fields=[
     _descriptor.FieldDescriptor(
-      name='success', full_name='panel.Response.success', index=0,
-      number=1, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='cid', full_name='panel.Request.cid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
@@ -91,13 +91,53 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=67,
+  serialized_start=72,
   serialized_end=94,
 )
 
+
+_RESPONSE = _descriptor.Descriptor(
+  name='Response',
+  full_name='panel.Response',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='panel.Response.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=96,
+  serialized_end=123,
+)
+
+DESCRIPTOR.message_types_by_name['RequestValue'] = _REQUESTVALUE
 DESCRIPTOR.message_types_by_name['Request'] = _REQUEST
 DESCRIPTOR.message_types_by_name['Response'] = _RESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+RequestValue = _reflection.GeneratedProtocolMessageType('RequestValue', (_message.Message,), {
+  'DESCRIPTOR' : _REQUESTVALUE,
+  '__module__' : 'admin_panel_pb2'
+  # @@protoc_insertion_point(class_scope:panel.RequestValue)
+  })
+_sym_db.RegisterMessage(RequestValue)
 
 Request = _reflection.GeneratedProtocolMessageType('Request', (_message.Message,), {
   'DESCRIPTOR' : _REQUEST,
@@ -122,13 +162,43 @@ _ADMINPANEL = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=96,
-  serialized_end=159,
+  serialized_start=126,
+  serialized_end=349,
   methods=[
   _descriptor.MethodDescriptor(
     name='InsertClient',
     full_name='panel.AdminPanel.InsertClient',
     index=0,
+    containing_service=None,
+    input_type=_REQUESTVALUE,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='UpdateClient',
+    full_name='panel.AdminPanel.UpdateClient',
+    index=1,
+    containing_service=None,
+    input_type=_REQUESTVALUE,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetClient',
+    full_name='panel.AdminPanel.GetClient',
+    index=2,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_RESPONSE,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteClient',
+    full_name='panel.AdminPanel.DeleteClient',
+    index=3,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_RESPONSE,
