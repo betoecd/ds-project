@@ -9,6 +9,7 @@ verify_ssl = true
 grpcio = "*"
 grpcio-tools = "*"
 flask = "*"
+paho-mqtt = "*"
 
 [requires]
 python_version = "3.9"

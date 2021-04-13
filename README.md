@@ -12,3 +12,9 @@ $ pipenv shell
 # Install packages
 $ pipenv install
 ```
+
+## Run
+
+```bash
+$ python3 admin_panel/panel/app.py
+```
